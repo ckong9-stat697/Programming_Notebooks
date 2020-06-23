@@ -66,7 +66,13 @@ library(lubridate)
 text.df$combined = mdy(text.df$combined)
 ```
 
-```strsplit``` Function create subset string by matching character patterns. Where adding 
+```strsplit``` Function create subset string by matching character patterns. Where adding brackets let R treat * as character
 ```{r}
 agents = strspit(text.df$text,'[*]')
 ```
+
+Finding the characters from specific positions. Space also count.
+```{r}
+substring('R text mining is great', 18, 22)
+```
+
