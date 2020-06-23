@@ -1,0 +1,72 @@
+---
+title: "First Text-mining Notebook"
+output: html_notebook
+---
+Captured from the book "Ted Kwartler - Text Mining in Practice with R-Wiley (2017)"
+## Chapter 2
+```{r}
+# Set Option
+options(stringAsFactors=F)
+Sys.setlocale('LC_ALL', 'C')
+```
+
+
+```{r}
+library(stringi)
+library(stringr)
+library(qdap)
+```
+
+```{r}
+text.df = read.csv('oct_delta.csv')
+nchar(head(text.df$text))
+mean(nchar(text.df$text))
+
+# Only keeps document with the number of character greater than 0
+subset.doc = subset(text.df, nchar(text.df$text)>0)
+```
+
+The function ```sub``` looks for the first pattern match in a string and replaces it.
+Replacing the first string to the second string.
+```{r}
+sub('thanks', 'thank you', text,df[1,5], ignore.case=T)
+```
+
+It is also vectored so that it can be applied to a column and replacements will occur for each of the first pattern matches by row.
+```{r}
+sub('pls', 'please', text.df[1:5,5], ignore.case=F)
+```
+
+while the function ```gsub``` is the global substitution that can replace all instances. Compare:
+```{r}
+sub('text mining', 'tm', fake.text, ignore.case=F)
+gsub('text mining', 'tm', fake.text, ignore.case=F)
+
+```
+
+The fucntion ```mgsub``` is multiple global substitution that allows to pass a vetor of patterns to be replaced with another vector.
+```{r}
+library(qdap)
+patterns=c('good', 'also', 'text mining')
+replacements = c('great', 'just as suitable', 'tm')
+mgsub(patterns, replacements, fake.text)
+```
+
+### Example on replacing vectors
+```{r}
+patterns = c('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')
+replacements=seq(1:12)
+text.df$month=mgsub(patterns, replacements, text.df$month)
+text.df$combined = paste(text.df$month, text.df$date, text.df$year, sep='-')
+```
+
+```{r}
+library(lubridate)
+#Converting date to official date
+text.df$combined = mdy(text.df$combined)
+```
+
+```strsplit``` Function create subset string by matching character patterns. Where adding 
+```{r}
+agents = strspit(text.df$text,'[*]')
+```
