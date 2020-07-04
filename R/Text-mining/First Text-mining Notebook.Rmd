@@ -3,13 +3,13 @@ title: "First Text-mining Notebook"
 output: html_notebook
 ---
 Captured from the book "Ted Kwartler - Text Mining in Practice with R-Wiley (2017)"
-## Chapter 2
+# Chapter 2
+## Chapter 2.4 String Manipulations
 ```{r}
 # Set Option
 options(stringAsFactors=F)
 Sys.setlocale('LC_ALL', 'C')
 ```
-
 
 ```{r}
 library(stringi)
@@ -74,5 +74,58 @@ agents = strspit(text.df$text,'[*]')
 Finding the characters from specific positions. Space also count.
 ```{r}
 substring('R text mining is great', 18, 22)
+```
+
+The ```last.chars``` function creats the numbers for substring dynamically.
+```{r}
+last.chars = function(text,num){
+  last=substr(text, nchar(text)-num+1, nchar(text))
+  return(last)
+}
+
+last.chars('R text mining is great', 5)
+```
+
+## Chapter 2.5 Keyword Scanning
+Using ```grep``` function will return the position of the keyword
+```{r}
+grep('sorry', text.df$text, ignore.case=T)
+```
+
+Using ```grepl``` will return a logical vector 
+```{r}
+sorry = grepl('sorry', text.df$text, ignore.case=T)
+sum(sorry/nrow(text.df))
+```
+
+Comfirming how often an agent sharing hyperlinks and phone number
+```{r}
+sum(grepl('http', tet.df$text, ignore.case=T))/nrow(text.df)
+sum(grepl('[0-9]{3}|[0-9]{4}', text.df$text))/nrow(text.df)
+```
+
+## Chapter 2.6 tring Packages ```stringr``` and ```stringi```
+
+```stri_count``` returns frequency count for the exact search terms.
+```{r}
+library(stringi)
+stri_count(text.df$text, fixed='http')
+```
+
+Below returns a logical vector looking or the character pattern "http" within your tweets.
+```{r}
+library(stringr)
+str_detect(text.df$text, 'http')
+patterns = with(text.df, str_detect(text.df$text, 'http') & str_detect(text.df$text, 'DM'))
+text.df[patterns,5]
+```
+
+## Chapter 2.7 Preprocessing Steps for Bag of Words Text Mining
+```{r}
+options(stringsAsFactors = FALSE)
+Sys.setlocale('LC_ALL', 'C')
+library(tm)
+library(stringi)
+tweets = data.frame(ID=seq(1:nrow(text.df)), text=text.df$text)
 ```
 

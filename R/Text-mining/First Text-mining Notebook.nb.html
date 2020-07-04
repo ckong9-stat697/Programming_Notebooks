@@ -1749,67 +1749,71 @@ summary {
 
 
 <!-- rnb-text-begin -->
-<p>Captured from the book “Ted Kwartler - Text Mining in Practice with R-Wiley (2017)” ## Chapter 2</p>
+<p>Captured from the book “Ted Kwartler - Text Mining in Practice with R-Wiley (2017)” # Chapter 2 ## Chapter 2.4 String Manipulations</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBTZXQgT3B0aW9uXG5vcHRpb25zKHN0cmluZ0FzRmFjdG9ycz1GKVxuU3lzLnNldGxvY2FsZSgnTENfQUxMJywgJ0MnKVxuYGBgXG5gYGAifQ== -->
-<p><code>r</code>r # Set Option options(stringAsFactors=F) Sys.setlocale(‘LC_ALL’, ‘C’)</p>
-<pre><code></code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTZXQgT3B0aW9uXG5vcHRpb25zKHN0cmluZ0FzRmFjdG9ycz1GKVxuU3lzLnNldGxvY2FsZSgnTENfQUxMJywgJ0MnKVxuYGBgIn0= -->
+<pre class="r"><code># Set Option
+options(stringAsFactors=F)
+Sys.setlocale('LC_ALL', 'C')</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShzdHJpbmdpKVxubGlicmFyeShzdHJpbmdyKVxubGlicmFyeShxZGFwKVxuYGBgXG5gYGAifQ== -->
-<p><code>r</code>r library(stringi) library(stringr) library(qdap)</p>
-<pre><code></code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzdHJpbmdpKVxubGlicmFyeShzdHJpbmdyKVxubGlicmFyeShxZGFwKVxuYGBgIn0= -->
+<pre class="r"><code>library(stringi)
+library(stringr)
+library(qdap)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxudGV4dC5kZiA9IHJlYWQuY3N2KCdvY3RfZGVsdGEuY3N2Jylcbm5jaGFyKGhlYWQodGV4dC5kZiR0ZXh0KSlcbm1lYW4obmNoYXIodGV4dC5kZiR0ZXh0KSlcblxuIyBPbmx5IGtlZXBzIGRvY3VtZW50IHdpdGggdGhlIG51bWJlciBvZiBjaGFyYWN0ZXIgZ3JlYXRlciB0aGFuIDBcbnN1YnNldC5kb2MgPSBzdWJzZXQodGV4dC5kZiwgbmNoYXIodGV4dC5kZiR0ZXh0KT4wKVxuYGBgXG5gYGAifQ== -->
-<p><code>r</code>r text.df = read.csv(‘oct_delta.csv’) nchar(head(text.df<span class="math inline">\(text)) mean(nchar(text.df\)</span>text))</p>
-<div id="only-keeps-document-with-the-number-of-character-greater-than-0" class="section level1">
-<h1>Only keeps document with the number of character greater than 0</h1>
-<p>subset.doc = subset(text.df, nchar(text.df$text)&gt;0)</p>
-<pre><code></code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGV4dC5kZiA9IHJlYWQuY3N2KCdvY3RfZGVsdGEuY3N2Jylcbm5jaGFyKGhlYWQodGV4dC5kZiR0ZXh0KSlcbm1lYW4obmNoYXIodGV4dC5kZiR0ZXh0KSlcblxuIyBPbmx5IGtlZXBzIGRvY3VtZW50IHdpdGggdGhlIG51bWJlciBvZiBjaGFyYWN0ZXIgZ3JlYXRlciB0aGFuIDBcbnN1YnNldC5kb2MgPSBzdWJzZXQodGV4dC5kZiwgbmNoYXIodGV4dC5kZiR0ZXh0KT4wKVxuYGBgIn0= -->
+<pre class="r"><code>text.df = read.csv('oct_delta.csv')
+nchar(head(text.df$text))
+mean(nchar(text.df$text))
+
+# Only keeps document with the number of character greater than 0
+subset.doc = subset(text.df, nchar(text.df$text)&gt;0)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>The function <code>sub</code> looks for the first pattern match in a string and replaces it. Replacing the first string to the second string.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3ViKCd0aGFua3MnLCAndGhhbmsgeW91JywgdGV4dCxkZlsxLDVdLCBpZ25vcmUuY2FzZT1UKVxuYGBgXG5gYGAifQ== -->
-<p><code>r</code>r sub(‘thanks’, ‘thank you’, text,df[1,5], ignore.case=T)</p>
-<pre><code></code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3ViKCd0aGFua3MnLCAndGhhbmsgeW91JywgdGV4dCxkZlsxLDVdLCBpZ25vcmUuY2FzZT1UKVxuYGBgIn0= -->
+<pre class="r"><code>sub('thanks', 'thank you', text,df[1,5], ignore.case=T)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>It is also vectored so that it can be applied to a column and replacements will occur for each of the first pattern matches by row.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3ViKCdwbHMnLCAncGxlYXNlJywgdGV4dC5kZlsxOjUsNV0sIGlnbm9yZS5jYXNlPUYpXG5gYGBcbmBgYCJ9 -->
-<p><code>r</code>r sub(‘pls’, ‘please’, text.df[1:5,5], ignore.case=F)</p>
-<pre><code></code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3ViKCdwbHMnLCAncGxlYXNlJywgdGV4dC5kZlsxOjUsNV0sIGlnbm9yZS5jYXNlPUYpXG5gYGAifQ== -->
+<pre class="r"><code>sub('pls', 'please', text.df[1:5,5], ignore.case=F)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>while the function <code>gsub</code> is the global substitution that can replace all instances. Compare:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3ViKCd0ZXh0IG1pbmluZycsICd0bScsIGZha2UudGV4dCwgaWdub3JlLmNhc2U9RilcbmdzdWIoJ3RleHQgbWluaW5nJywgJ3RtJywgZmFrZS50ZXh0LCBpZ25vcmUuY2FzZT1GKVxuXG5gYGBcbmBgYCJ9 -->
-<p><code>r</code>r sub(‘text mining’, ‘tm’, fake.text, ignore.case=F) gsub(‘text mining’, ‘tm’, fake.text, ignore.case=F)</p>
-<pre><code></code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3ViKCd0ZXh0IG1pbmluZycsICd0bScsIGZha2UudGV4dCwgaWdub3JlLmNhc2U9RilcbmdzdWIoJ3RleHQgbWluaW5nJywgJ3RtJywgZmFrZS50ZXh0LCBpZ25vcmUuY2FzZT1GKVxuXG5gYGAifQ== -->
+<pre class="r"><code>sub('text mining', 'tm', fake.text, ignore.case=F)
+gsub('text mining', 'tm', fake.text, ignore.case=F)
+</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>The fucntion <code>mgsub</code> is multiple global substitution that allows to pass a vetor of patterns to be replaced with another vector.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShxZGFwKVxucGF0dGVybnM9YygnZ29vZCcsICdhbHNvJywgJ3RleHQgbWluaW5nJylcbnJlcGxhY2VtZW50cyA9IGMoJ2dyZWF0JywgJ2p1c3QgYXMgc3VpdGFibGUnLCAndG0nKVxubWdzdWIocGF0dGVybnMsIHJlcGxhY2VtZW50cywgZmFrZS50ZXh0KVxuYGBgXG5gYGAifQ== -->
-<p><code>r</code>r library(qdap) patterns=c(‘good’, ‘also’, ‘text mining’) replacements = c(‘great’, ‘just as suitable’, ‘tm’) mgsub(patterns, replacements, fake.text)</p>
-<pre><code></code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShxZGFwKVxucGF0dGVybnM9YygnZ29vZCcsICdhbHNvJywgJ3RleHQgbWluaW5nJylcbnJlcGxhY2VtZW50cyA9IGMoJ2dyZWF0JywgJ2p1c3QgYXMgc3VpdGFibGUnLCAndG0nKVxubWdzdWIocGF0dGVybnMsIHJlcGxhY2VtZW50cywgZmFrZS50ZXh0KVxuYGBgIn0= -->
+<pre class="r"><code>library(qdap)
+patterns=c('good', 'also', 'text mining')
+replacements = c('great', 'just as suitable', 'tm')
+mgsub(patterns, replacements, fake.text)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1817,17 +1821,20 @@ summary {
 <h3>Example on replacing vectors</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxucGF0dGVybnMgPSBjKCdKYW4nLCdGZWInLCdNYXInLCdBcHInLCdNYXknLCdKdW4nLCdKdWwnLCdBdWcnLCdTZXAnLCdPY3QnLCdOb3YnLCdEZWMnKVxucmVwbGFjZW1lbnRzPXNlcSgxOjEyKVxudGV4dC5kZiRtb250aD1tZ3N1YihwYXR0ZXJucywgcmVwbGFjZW1lbnRzLCB0ZXh0LmRmJG1vbnRoKVxudGV4dC5kZiRjb21iaW5lZCA9IHBhc3RlKHRleHQuZGYkbW9udGgsIHRleHQuZGYkZGF0ZSwgdGV4dC5kZiR5ZWFyLCBzZXA9Jy0nKVxuYGBgXG5gYGAifQ== -->
-<p><code>r</code>r patterns = c(‘Jan’,‘Feb’,‘Mar’,‘Apr’,‘May’,‘Jun’,‘Jul’,‘Aug’,‘Sep’,‘Oct’,‘Nov’,‘Dec’) replacements=seq(1:12) text.df<span class="math inline">\(month=mgsub(patterns, replacements, text.df\)</span>month) text.df<span class="math inline">\(combined = paste(text.df\)</span>month, text.df<span class="math inline">\(date, text.df\)</span>year, sep=‘-’)</p>
-<pre><code></code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGF0dGVybnMgPSBjKCdKYW4nLCdGZWInLCdNYXInLCdBcHInLCdNYXknLCdKdW4nLCdKdWwnLCdBdWcnLCdTZXAnLCdPY3QnLCdOb3YnLCdEZWMnKVxucmVwbGFjZW1lbnRzPXNlcSgxOjEyKVxudGV4dC5kZiRtb250aD1tZ3N1YihwYXR0ZXJucywgcmVwbGFjZW1lbnRzLCB0ZXh0LmRmJG1vbnRoKVxudGV4dC5kZiRjb21iaW5lZCA9IHBhc3RlKHRleHQuZGYkbW9udGgsIHRleHQuZGYkZGF0ZSwgdGV4dC5kZiR5ZWFyLCBzZXA9Jy0nKVxuYGBgIn0= -->
+<pre class="r"><code>patterns = c('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')
+replacements=seq(1:12)
+text.df$month=mgsub(patterns, replacements, text.df$month)
+text.df$combined = paste(text.df$month, text.df$date, text.df$year, sep='-')</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShsdWJyaWRhdGUpXG4jQ29udmVydGluZyBkYXRlIHRvIG9mZmljaWFsIGRhdGVcbnRleHQuZGYkY29tYmluZWQgPSBtZHkodGV4dC5kZiRjb21iaW5lZClcbmBgYFxuYGBgIn0= -->
-<p><code>r</code>r library(lubridate) #Converting date to official date text.df<span class="math inline">\(combined = mdy(text.df\)</span>combined)</p>
-<pre><code></code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShsdWJyaWRhdGUpXG4jQ29udmVydGluZyBkYXRlIHRvIG9mZmljaWFsIGRhdGVcbnRleHQuZGYkY29tYmluZWQgPSBtZHkodGV4dC5kZiRjb21iaW5lZClcbmBgYCJ9 -->
+<pre class="r"><code>library(lubridate)
+#Converting date to official date
+text.df$combined = mdy(text.df$combined)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1851,11 +1858,93 @@ summary {
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>The <code>last.chars</code> function creats the numbers for substring dynamically.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGFzdC5jaGFycyA9IGZ1bmN0aW9uKHRleHQsbnVtKXtcbiAgbGFzdD1zdWJzdHIodGV4dCwgbmNoYXIodGV4dCktbnVtKzEsIG5jaGFyKHRleHQpKVxuICByZXR1cm4obGFzdClcbn1cblxubGFzdC5jaGFycygnUiB0ZXh0IG1pbmluZyBpcyBncmVhdCcsIDUpXG5gYGAifQ== -->
+<pre class="r"><code>last.chars = function(text,num){
+  last=substr(text, nchar(text)-num+1, nchar(text))
+  return(last)
+}
+
+last.chars('R text mining is great', 5)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="chapter-2.5-keyword-scanning" class="section level2">
+<h2>Chapter 2.5 Keyword Scanning</h2>
+<p>Using <code>grep</code> function will return the position of the keyword</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ3JlcCgnc29ycnknLCB0ZXh0LmRmJHRleHQsIGlnbm9yZS5jYXNlPVQpXG5gYGAifQ== -->
+<pre class="r"><code>grep('sorry', text.df$text, ignore.case=T)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZ3JlcChcInNvcnJ5XCIsIHRleHQuZGYkdGV4dCwgaWdub3JlLmNhc2UgPSBUKSA6IFxuICBvYmplY3QgJ3RleHQuZGYnIG5vdCBmb3VuZFxuIn0= -->
+<pre><code>Error in grep(&quot;sorry&quot;, text.df$text, ignore.case = T) : 
+  object 'text.df' not found</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Using <code>grepl</code> will return a logical vector</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc29ycnkgPSBncmVwbCgnc29ycnknLCB0ZXh0LmRmJHRleHQsIGlnbm9yZS5jYXNlPVQpXG5zdW0oc29ycnkvbnJvdyh0ZXh0LmRmKSlcbmBgYCJ9 -->
+<pre class="r"><code>sorry = grepl('sorry', text.df$text, ignore.case=T)
+sum(sorry/nrow(text.df))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Comfirming how often an agent sharing hyperlinks and phone number</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtKGdyZXBsKCdodHRwJywgdGV0LmRmJHRleHQsIGlnbm9yZS5jYXNlPVQpKS9ucm93KHRleHQuZGYpXG5zdW0oZ3JlcGwoJ1swLTldezN9fFswLTldezR9JywgdGV4dC5kZiR0ZXh0KSkvbnJvdyh0ZXh0LmRmKVxuYGBgIn0= -->
+<pre class="r"><code>sum(grepl('http', tet.df$text, ignore.case=T))/nrow(text.df)
+sum(grepl('[0-9]{3}|[0-9]{4}', text.df$text))/nrow(text.df)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="chapter-2.6-tring-packages-stringr-and-stringi" class="section level2">
+<h2>Chapter 2.6 tring Packages <code>stringr</code> and <code>stringi</code></h2>
+<p><code>stri_count</code> returns frequency count for the exact search terms.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzdHJpbmdpKVxuc3RyaV9jb3VudCh0ZXh0LmRmJHRleHQsIGZpeGVkPSdodHRwJylcbmBgYCJ9 -->
+<pre class="r"><code>library(stringi)
+stri_count(text.df$text, fixed='http')</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Below returns a logical vector looking or the character pattern “http” within your tweets.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzdHJpbmdyKVxuc3RyX2RldGVjdCh0ZXh0LmRmJHRleHQsICdodHRwJylcbnBhdHRlcm5zID0gd2l0aCh0ZXh0LmRmLCBzdHJfZGV0ZWN0KHRleHQuZGYkdGV4dCwgJ2h0dHAnKSAmIHN0cl9kZXRlY3QodGV4dC5kZiR0ZXh0LCAnRE0nKSlcbnRleHQuZGZbcGF0dGVybnMsNV1cbmBgYCJ9 -->
+<pre class="r"><code>library(stringr)
+str_detect(text.df$text, 'http')
+patterns = with(text.df, str_detect(text.df$text, 'http') &amp; str_detect(text.df$text, 'DM'))
+text.df[patterns,5]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="chapter-2.7-preprocessing-steps-for-bag-of-words-text-mining" class="section level2">
+<h2>Chapter 2.7 Preprocessing Steps for Bag of Words Text Mining</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxub3B0aW9ucyhzdHJpbmdzQXNGYWN0b3JzID0gRkFMU0UpXG5TeXMuc2V0bG9jYWxlKCdMQ19BTEwnLCAnQycpXG5saWJyYXJ5KHRtKVxubGlicmFyeShzdHJpbmdpKVxudHdlZXRzID0gZGF0YS5mcmFtZShJRD1zZXEoMTpucm93KHRleHQuZGYpKSwgdGV4dD10ZXh0LmRmJHRleHQpXG5gYGAifQ== -->
+<pre class="r"><code>options(stringsAsFactors = FALSE)
+Sys.setlocale('LC_ALL', 'C')
+library(tm)
+library(stringi)
+tweets = data.frame(ID=seq(1:nrow(text.df)), text=text.df$text)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
-</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRmlyc3QgVGV4dC1taW5pbmcgTm90ZWJvb2siCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KQ2FwdHVyZWQgZnJvbSB0aGUgYm9vayAiVGVkIEt3YXJ0bGVyIC0gVGV4dCBNaW5pbmcgaW4gUHJhY3RpY2Ugd2l0aCBSLVdpbGV5ICgyMDE3KSIKIyMgQ2hhcHRlciAyCmBgYHtyfQojIFNldCBPcHRpb24Kb3B0aW9ucyhzdHJpbmdBc0ZhY3RvcnM9RikKU3lzLnNldGxvY2FsZSgnTENfQUxMJywgJ0MnKQpgYGAKCgpgYGB7cn0KbGlicmFyeShzdHJpbmdpKQpsaWJyYXJ5KHN0cmluZ3IpCmxpYnJhcnkocWRhcCkKYGBgCgpgYGB7cn0KdGV4dC5kZiA9IHJlYWQuY3N2KCdvY3RfZGVsdGEuY3N2JykKbmNoYXIoaGVhZCh0ZXh0LmRmJHRleHQpKQptZWFuKG5jaGFyKHRleHQuZGYkdGV4dCkpCgojIE9ubHkga2VlcHMgZG9jdW1lbnQgd2l0aCB0aGUgbnVtYmVyIG9mIGNoYXJhY3RlciBncmVhdGVyIHRoYW4gMApzdWJzZXQuZG9jID0gc3Vic2V0KHRleHQuZGYsIG5jaGFyKHRleHQuZGYkdGV4dCk+MCkKYGBgCgpUaGUgZnVuY3Rpb24gYGBgc3ViYGBgIGxvb2tzIGZvciB0aGUgZmlyc3QgcGF0dGVybiBtYXRjaCBpbiBhIHN0cmluZyBhbmQgcmVwbGFjZXMgaXQuClJlcGxhY2luZyB0aGUgZmlyc3Qgc3RyaW5nIHRvIHRoZSBzZWNvbmQgc3RyaW5nLgpgYGB7cn0Kc3ViKCd0aGFua3MnLCAndGhhbmsgeW91JywgdGV4dCxkZlsxLDVdLCBpZ25vcmUuY2FzZT1UKQpgYGAKCkl0IGlzIGFsc28gdmVjdG9yZWQgc28gdGhhdCBpdCBjYW4gYmUgYXBwbGllZCB0byBhIGNvbHVtbiBhbmQgcmVwbGFjZW1lbnRzIHdpbGwgb2NjdXIgZm9yIGVhY2ggb2YgdGhlIGZpcnN0IHBhdHRlcm4gbWF0Y2hlcyBieSByb3cuCmBgYHtyfQpzdWIoJ3BscycsICdwbGVhc2UnLCB0ZXh0LmRmWzE6NSw1XSwgaWdub3JlLmNhc2U9RikKYGBgCgp3aGlsZSB0aGUgZnVuY3Rpb24gYGBgZ3N1YmBgYCBpcyB0aGUgZ2xvYmFsIHN1YnN0aXR1dGlvbiB0aGF0IGNhbiByZXBsYWNlIGFsbCBpbnN0YW5jZXMuIENvbXBhcmU6CmBgYHtyfQpzdWIoJ3RleHQgbWluaW5nJywgJ3RtJywgZmFrZS50ZXh0LCBpZ25vcmUuY2FzZT1GKQpnc3ViKCd0ZXh0IG1pbmluZycsICd0bScsIGZha2UudGV4dCwgaWdub3JlLmNhc2U9RikKCmBgYAoKVGhlIGZ1Y250aW9uIGBgYG1nc3ViYGBgIGlzIG11bHRpcGxlIGdsb2JhbCBzdWJzdGl0dXRpb24gdGhhdCBhbGxvd3MgdG8gcGFzcyBhIHZldG9yIG9mIHBhdHRlcm5zIHRvIGJlIHJlcGxhY2VkIHdpdGggYW5vdGhlciB2ZWN0b3IuCmBgYHtyfQpsaWJyYXJ5KHFkYXApCnBhdHRlcm5zPWMoJ2dvb2QnLCAnYWxzbycsICd0ZXh0IG1pbmluZycpCnJlcGxhY2VtZW50cyA9IGMoJ2dyZWF0JywgJ2p1c3QgYXMgc3VpdGFibGUnLCAndG0nKQptZ3N1YihwYXR0ZXJucywgcmVwbGFjZW1lbnRzLCBmYWtlLnRleHQpCmBgYAoKIyMjIEV4YW1wbGUgb24gcmVwbGFjaW5nIHZlY3RvcnMKYGBge3J9CnBhdHRlcm5zID0gYygnSmFuJywnRmViJywnTWFyJywnQXByJywnTWF5JywnSnVuJywnSnVsJywnQXVnJywnU2VwJywnT2N0JywnTm92JywnRGVjJykKcmVwbGFjZW1lbnRzPXNlcSgxOjEyKQp0ZXh0LmRmJG1vbnRoPW1nc3ViKHBhdHRlcm5zLCByZXBsYWNlbWVudHMsIHRleHQuZGYkbW9udGgpCnRleHQuZGYkY29tYmluZWQgPSBwYXN0ZSh0ZXh0LmRmJG1vbnRoLCB0ZXh0LmRmJGRhdGUsIHRleHQuZGYkeWVhciwgc2VwPSctJykKYGBgCgpgYGB7cn0KbGlicmFyeShsdWJyaWRhdGUpCiNDb252ZXJ0aW5nIGRhdGUgdG8gb2ZmaWNpYWwgZGF0ZQp0ZXh0LmRmJGNvbWJpbmVkID0gbWR5KHRleHQuZGYkY29tYmluZWQpCmBgYAoKYGBgc3Ryc3BsaXRgYGAgRnVuY3Rpb24gY3JlYXRlIHN1YnNldCBzdHJpbmcgYnkgbWF0Y2hpbmcgY2hhcmFjdGVyIHBhdHRlcm5zLiBXaGVyZSBhZGRpbmcgYnJhY2tldHMgbGV0IFIgdHJlYXQgKiBhcyBjaGFyYWN0ZXIKYGBge3J9CmFnZW50cyA9IHN0cnNwaXQodGV4dC5kZiR0ZXh0LCdbKl0nKQpgYGAKCkZpbmRpbmcgdGhlIGNoYXJhY3RlcnMgZnJvbSBzcGVjaWZpYyBwb3NpdGlvbnMuIFNwYWNlIGFsc28gY291bnQuCmBgYHtyfQpzdWJzdHJpbmcoJ1IgdGV4dCBtaW5pbmcgaXMgZ3JlYXQnLCAxOCwgMjIpCmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRmlyc3QgVGV4dC1taW5pbmcgTm90ZWJvb2siCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KQ2FwdHVyZWQgZnJvbSB0aGUgYm9vayAiVGVkIEt3YXJ0bGVyIC0gVGV4dCBNaW5pbmcgaW4gUHJhY3RpY2Ugd2l0aCBSLVdpbGV5ICgyMDE3KSIKIyBDaGFwdGVyIDIKIyMgQ2hhcHRlciAyLjQgU3RyaW5nIE1hbmlwdWxhdGlvbnMKYGBge3J9CiMgU2V0IE9wdGlvbgpvcHRpb25zKHN0cmluZ0FzRmFjdG9ycz1GKQpTeXMuc2V0bG9jYWxlKCdMQ19BTEwnLCAnQycpCmBgYAoKYGBge3J9CmxpYnJhcnkoc3RyaW5naSkKbGlicmFyeShzdHJpbmdyKQpsaWJyYXJ5KHFkYXApCmBgYAoKYGBge3J9CnRleHQuZGYgPSByZWFkLmNzdignb2N0X2RlbHRhLmNzdicpCm5jaGFyKGhlYWQodGV4dC5kZiR0ZXh0KSkKbWVhbihuY2hhcih0ZXh0LmRmJHRleHQpKQoKIyBPbmx5IGtlZXBzIGRvY3VtZW50IHdpdGggdGhlIG51bWJlciBvZiBjaGFyYWN0ZXIgZ3JlYXRlciB0aGFuIDAKc3Vic2V0LmRvYyA9IHN1YnNldCh0ZXh0LmRmLCBuY2hhcih0ZXh0LmRmJHRleHQpPjApCmBgYAoKVGhlIGZ1bmN0aW9uIGBgYHN1YmBgYCBsb29rcyBmb3IgdGhlIGZpcnN0IHBhdHRlcm4gbWF0Y2ggaW4gYSBzdHJpbmcgYW5kIHJlcGxhY2VzIGl0LgpSZXBsYWNpbmcgdGhlIGZpcnN0IHN0cmluZyB0byB0aGUgc2Vjb25kIHN0cmluZy4KYGBge3J9CnN1YigndGhhbmtzJywgJ3RoYW5rIHlvdScsIHRleHQsZGZbMSw1XSwgaWdub3JlLmNhc2U9VCkKYGBgCgpJdCBpcyBhbHNvIHZlY3RvcmVkIHNvIHRoYXQgaXQgY2FuIGJlIGFwcGxpZWQgdG8gYSBjb2x1bW4gYW5kIHJlcGxhY2VtZW50cyB3aWxsIG9jY3VyIGZvciBlYWNoIG9mIHRoZSBmaXJzdCBwYXR0ZXJuIG1hdGNoZXMgYnkgcm93LgpgYGB7cn0Kc3ViKCdwbHMnLCAncGxlYXNlJywgdGV4dC5kZlsxOjUsNV0sIGlnbm9yZS5jYXNlPUYpCmBgYAoKd2hpbGUgdGhlIGZ1bmN0aW9uIGBgYGdzdWJgYGAgaXMgdGhlIGdsb2JhbCBzdWJzdGl0dXRpb24gdGhhdCBjYW4gcmVwbGFjZSBhbGwgaW5zdGFuY2VzLiBDb21wYXJlOgpgYGB7cn0Kc3ViKCd0ZXh0IG1pbmluZycsICd0bScsIGZha2UudGV4dCwgaWdub3JlLmNhc2U9RikKZ3N1YigndGV4dCBtaW5pbmcnLCAndG0nLCBmYWtlLnRleHQsIGlnbm9yZS5jYXNlPUYpCgpgYGAKClRoZSBmdWNudGlvbiBgYGBtZ3N1YmBgYCBpcyBtdWx0aXBsZSBnbG9iYWwgc3Vic3RpdHV0aW9uIHRoYXQgYWxsb3dzIHRvIHBhc3MgYSB2ZXRvciBvZiBwYXR0ZXJucyB0byBiZSByZXBsYWNlZCB3aXRoIGFub3RoZXIgdmVjdG9yLgpgYGB7cn0KbGlicmFyeShxZGFwKQpwYXR0ZXJucz1jKCdnb29kJywgJ2Fsc28nLCAndGV4dCBtaW5pbmcnKQpyZXBsYWNlbWVudHMgPSBjKCdncmVhdCcsICdqdXN0IGFzIHN1aXRhYmxlJywgJ3RtJykKbWdzdWIocGF0dGVybnMsIHJlcGxhY2VtZW50cywgZmFrZS50ZXh0KQpgYGAKCiMjIyBFeGFtcGxlIG9uIHJlcGxhY2luZyB2ZWN0b3JzCmBgYHtyfQpwYXR0ZXJucyA9IGMoJ0phbicsJ0ZlYicsJ01hcicsJ0FwcicsJ01heScsJ0p1bicsJ0p1bCcsJ0F1ZycsJ1NlcCcsJ09jdCcsJ05vdicsJ0RlYycpCnJlcGxhY2VtZW50cz1zZXEoMToxMikKdGV4dC5kZiRtb250aD1tZ3N1YihwYXR0ZXJucywgcmVwbGFjZW1lbnRzLCB0ZXh0LmRmJG1vbnRoKQp0ZXh0LmRmJGNvbWJpbmVkID0gcGFzdGUodGV4dC5kZiRtb250aCwgdGV4dC5kZiRkYXRlLCB0ZXh0LmRmJHllYXIsIHNlcD0nLScpCmBgYAoKYGBge3J9CmxpYnJhcnkobHVicmlkYXRlKQojQ29udmVydGluZyBkYXRlIHRvIG9mZmljaWFsIGRhdGUKdGV4dC5kZiRjb21iaW5lZCA9IG1keSh0ZXh0LmRmJGNvbWJpbmVkKQpgYGAKCmBgYHN0cnNwbGl0YGBgIEZ1bmN0aW9uIGNyZWF0ZSBzdWJzZXQgc3RyaW5nIGJ5IG1hdGNoaW5nIGNoYXJhY3RlciBwYXR0ZXJucy4gV2hlcmUgYWRkaW5nIGJyYWNrZXRzIGxldCBSIHRyZWF0ICogYXMgY2hhcmFjdGVyCmBgYHtyfQphZ2VudHMgPSBzdHJzcGl0KHRleHQuZGYkdGV4dCwnWypdJykKYGBgCgpGaW5kaW5nIHRoZSBjaGFyYWN0ZXJzIGZyb20gc3BlY2lmaWMgcG9zaXRpb25zLiBTcGFjZSBhbHNvIGNvdW50LgpgYGB7cn0Kc3Vic3RyaW5nKCdSIHRleHQgbWluaW5nIGlzIGdyZWF0JywgMTgsIDIyKQpgYGAKClRoZSBgYGBsYXN0LmNoYXJzYGBgIGZ1bmN0aW9uIGNyZWF0cyB0aGUgbnVtYmVycyBmb3Igc3Vic3RyaW5nIGR5bmFtaWNhbGx5LgpgYGB7cn0KbGFzdC5jaGFycyA9IGZ1bmN0aW9uKHRleHQsbnVtKXsKICBsYXN0PXN1YnN0cih0ZXh0LCBuY2hhcih0ZXh0KS1udW0rMSwgbmNoYXIodGV4dCkpCiAgcmV0dXJuKGxhc3QpCn0KCmxhc3QuY2hhcnMoJ1IgdGV4dCBtaW5pbmcgaXMgZ3JlYXQnLCA1KQpgYGAKCiMjIENoYXB0ZXIgMi41IEtleXdvcmQgU2Nhbm5pbmcKVXNpbmcgYGBgZ3JlcGBgYCBmdW5jdGlvbiB3aWxsIHJldHVybiB0aGUgcG9zaXRpb24gb2YgdGhlIGtleXdvcmQKYGBge3J9CmdyZXAoJ3NvcnJ5JywgdGV4dC5kZiR0ZXh0LCBpZ25vcmUuY2FzZT1UKQpgYGAKClVzaW5nIGBgYGdyZXBsYGBgIHdpbGwgcmV0dXJuIGEgbG9naWNhbCB2ZWN0b3IgCmBgYHtyfQpzb3JyeSA9IGdyZXBsKCdzb3JyeScsIHRleHQuZGYkdGV4dCwgaWdub3JlLmNhc2U9VCkKc3VtKHNvcnJ5L25yb3codGV4dC5kZikpCmBgYAoKQ29tZmlybWluZyBob3cgb2Z0ZW4gYW4gYWdlbnQgc2hhcmluZyBoeXBlcmxpbmtzIGFuZCBwaG9uZSBudW1iZXIKYGBge3J9CnN1bShncmVwbCgnaHR0cCcsIHRldC5kZiR0ZXh0LCBpZ25vcmUuY2FzZT1UKSkvbnJvdyh0ZXh0LmRmKQpzdW0oZ3JlcGwoJ1swLTldezN9fFswLTldezR9JywgdGV4dC5kZiR0ZXh0KSkvbnJvdyh0ZXh0LmRmKQpgYGAKCiMjIENoYXB0ZXIgMi42IHRyaW5nIFBhY2thZ2VzIGBgYHN0cmluZ3JgYGAgYW5kIGBgYHN0cmluZ2lgYGAKCmBgYHN0cmlfY291bnRgYGAgcmV0dXJucyBmcmVxdWVuY3kgY291bnQgZm9yIHRoZSBleGFjdCBzZWFyY2ggdGVybXMuCmBgYHtyfQpsaWJyYXJ5KHN0cmluZ2kpCnN0cmlfY291bnQodGV4dC5kZiR0ZXh0LCBmaXhlZD0naHR0cCcpCmBgYAoKQmVsb3cgcmV0dXJucyBhIGxvZ2ljYWwgdmVjdG9yIGxvb2tpbmcgb3IgdGhlIGNoYXJhY3RlciBwYXR0ZXJuICJodHRwIiB3aXRoaW4geW91ciB0d2VldHMuCmBgYHtyfQpsaWJyYXJ5KHN0cmluZ3IpCnN0cl9kZXRlY3QodGV4dC5kZiR0ZXh0LCAnaHR0cCcpCnBhdHRlcm5zID0gd2l0aCh0ZXh0LmRmLCBzdHJfZGV0ZWN0KHRleHQuZGYkdGV4dCwgJ2h0dHAnKSAmIHN0cl9kZXRlY3QodGV4dC5kZiR0ZXh0LCAnRE0nKSkKdGV4dC5kZltwYXR0ZXJucyw1XQpgYGAKCiMjIENoYXB0ZXIgMi43IFByZXByb2Nlc3NpbmcgU3RlcHMgZm9yIEJhZyBvZiBXb3JkcyBUZXh0IE1pbmluZwpgYGB7cn0Kb3B0aW9ucyhzdHJpbmdzQXNGYWN0b3JzID0gRkFMU0UpClN5cy5zZXRsb2NhbGUoJ0xDX0FMTCcsICdDJykKbGlicmFyeSh0bSkKbGlicmFyeShzdHJpbmdpKQp0d2VldHMgPSBkYXRhLmZyYW1lKElEPXNlcSgxOm5yb3codGV4dC5kZikpLCB0ZXh0PXRleHQuZGYkdGV4dCkKYGBgCgo=</div>
 
 
 
